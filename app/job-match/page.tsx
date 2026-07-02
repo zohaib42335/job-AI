@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { getUserResumes } from "@/lib/resume";
 import type { ResumeRecord } from "@/lib/resume";
@@ -88,8 +88,10 @@ const SAMPLE_JOBS: Job[] = [
     description: `Notion is on a mission to make it possible for every person, team, and company to tailor their tools to solve any problem. Join us as an APM to help build AI-powered features into the Notion product.\n\nRequirements:\n• 1-3 years of product management experience\n• Passion for AI and productivity tools\n• Strong analytical skills\n• Excellent communication`,
     tags: ["AI", "Productivity", "APM", "SaaS"],
     logo: "N", remote: false, applyUrl: "#",
+
   },
 ];
+void SAMPLE_JOBS;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constants
@@ -370,8 +372,8 @@ export default function JobMatchPage() {
     : "";
 
   // Job search hook (wires to /api/search-jobs + /api/match-report)
-  const { jobs: apiJobs, loading: searching, ranking, error: searchError,
-          hasMore, fetchJobs, loadMore, categorizeMatch } = useJobSearch(resumeText || undefined);
+    const { jobs: apiJobs, loading: searching, ranking, error: searchError,
+      hasMore, fetchJobs, loadMore } = useJobSearch(resumeText || undefined);
 
   // Merge with local saved-state so bookmark icon persists across re-ranks
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());

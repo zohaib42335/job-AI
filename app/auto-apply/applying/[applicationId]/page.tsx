@@ -5,7 +5,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { db } from "@/lib/firebase";
 import {
-  doc, onSnapshot, collection, query, orderBy, limit, getDocs,
+  doc, onSnapshot,
 } from "firebase/firestore";
 import type { ApplicationRecord } from "@/lib/auto-apply";
 import { localScore } from "@/lib/job-match";

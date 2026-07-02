@@ -28,7 +28,6 @@ import {
   ChevronRight,
   Lightbulb,
   ArrowUpRight,
-  Loader2,
 } from "lucide-react";
 import { clsx } from "clsx";
 
