@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JobAI
 
-## Getting Started
+[![CI](https://github.com/<your-org>/<your-repo>/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-org>/<your-repo>/actions/workflows/ci.yml)
 
-First, run the development server:
+A beginner-friendly Next.js project with a complete CI/CD test pipeline.
+
+## What’s included
+
+- GitHub Actions workflow for CI
+- JavaScript unit test with Vitest
+- Postman / Newman API test
+- Playwright UI test
+- test report artifact upload
+- simple `/api/health` endpoint for health checks
+
+## Getting started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> If you use GitHub Actions, replace `<your-org>/<your-repo>` in the badge URL above with your repository path.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Test commands
 
-## Learn More
+- `npm run test:unit` — run unit tests with Vitest
+- `npm run test:api` — run Newman API tests against `/api/health`
+- `npm run test:e2e` — run Playwright UI tests
+- `npm test` — run unit, API, and UI tests sequentially
 
-To learn more about Next.js, take a look at the following resources:
+## CI/CD pipeline
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The GitHub Actions workflow is located at `.github/workflows/ci.yml`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+It runs on push and pull requests to `main` and `master`, then:
 
-## Deploy on Vercel
+1. checks out the repository
+2. installs dependencies with `npm ci`
+3. builds the app
+4. starts the Next.js server
+5. runs unit tests
+6. runs Newman API tests
+7. runs Playwright UI tests
+8. uploads test reports as artifacts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Test files
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `vitest.config.ts`
+- `playwright.config.ts`
+- `postman/jobai-api.collection.json`
+- `tests/unit/health.test.ts`
+- `tests/e2e/login.spec.ts`
+
+## Notes
+
+- Playwright is configured to run headless in CI.
+- Test reports are generated under `reports/`.

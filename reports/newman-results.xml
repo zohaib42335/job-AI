@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="JobAI API health check" tests="1" time="7.785">
+  <testsuite name="Health endpoint" id="31f1628a-8f7c-4335-8cf5-8667b2f417fd" timestamp="2026-07-02T10:27:25.656Z" tests="3" failures="0" errors="0" time="7.785">
+    <testcase name="returns 200" time="7.785" classname="JobAiApiHealthCheck"/>
+    <testcase name="returns ok status" time="7.785" classname="JobAiApiHealthCheck"/>
+    <testcase name="returns a health message" time="7.785" classname="JobAiApiHealthCheck"/>
+  </testsuite>
+</testsuites>
